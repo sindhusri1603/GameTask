@@ -1,0 +1,50 @@
+import java.util.*;
+public class Game 
+{
+    public static final String ROCK = "ROCK";
+    public static final String PAPER = "PAPER";
+    public static final String SCISSORS = "SCISSORS";
+
+    public static void main(String args[]) 
+    {
+      System.out.println("Enter any one of the following inputs:  ");
+      System.out.println("ROCK");
+      System.out.println("PAPER");
+      System.out.println("SCISSORS");
+      System.out.println();
+      
+      String player1Move = getPlayer1Move();
+      String player2Move = getPlayer2Move(); 
+      if (player1Move.equals(player2Move))
+            System.out.println("Game is Tie !!");
+      else if (player1Move.equals(Game.ROCK))
+        System.out.println(player2Move.equals(Game.PAPER) ? "Player2 win the game!!": "Player1 win the game!!");   
+      else if (player1Move.equals(Game.PAPER))
+        System.out.println(player2Move.equals(Game.SCISSORS) ? "Player2 win the game!!": "Player1 win the game!!");   
+      else
+        System.out.println(player2Move.equals(Game.ROCK) ? "Player2 win the game!!": "Player1 win the game!!");   
+    }
+    public static String getPlayer2Move()
+    {
+        String player2move;
+        Random random = new Random();
+        int input = random.nextInt(3)+1;
+        if (input == 1)
+            player2move = Game.ROCK;
+        else if(input == 2)
+            player2move = Game.PAPER;
+        else
+            player2move = Game.SCISSORS;
+        System.out.println("Player2 move is: " + player2move);
+        System.out.println();
+        return player2move;    
+    }
+    public static String getPlayer1Move()
+    {
+        Scanner in = new Scanner(System.in);
+        String input = in.next();
+        String player1move = input.toUpperCase();
+        System.out.println("Player1 move is: " + player1move);
+        return player1move;
+    }    
+}
